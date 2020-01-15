@@ -1,5 +1,3 @@
-from bs4 import BeautifulSoup
-
 if __name__ == "__main__":
     import requests as rqs
     from src.scraping.scraping import Scraping
