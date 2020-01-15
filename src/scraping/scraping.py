@@ -18,6 +18,7 @@ class Scraping(object):
     def __removeSymbols(self, string):
         return re.sub(r'[^\w]', '', string)
 
+    def __splitSeasonYear(self):pass
 
     def getUris(self):
         leagues = self.findUris()
