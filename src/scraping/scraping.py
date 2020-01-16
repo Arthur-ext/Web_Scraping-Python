@@ -5,6 +5,8 @@ import re
 class Scraping(object):
     def __init__(self, base_uri):
         self.__base_uri = base_uri
+        self.__content = object
+        self.__links = {}
 
     def request(self):
         with webdriver.Chrome(executable_path=r"/usr/bin/chromedriver") as driver:
@@ -18,20 +20,20 @@ class Scraping(object):
     def __removeSymbols(self, string):
         return re.sub(r'[^\w]', '', string)
 
-    def __splitSeasonYear(self):pass
+    def __splitSeasonYear(self, string):
+        return string.split("-")[1]
 
     def getUris(self):
         leagues = self.findUris()
         leagues_content = leagues.findAll(name="div", class_="list")
         
-        links = {}
         for i in leagues_content:
-            season = i.find(name="span").getText()
-            season = self.__removeSymbols(season)
+            found_season = i.find(name="span").getText()
+            split_season = self.__splitSeasonYear(found_season)
+            season = self.__removeSymbols(split_season)
             for j in i.findAll(name="a"):
                 if j.getText() == "Summary":
-                    links.update({ season: j['href'] })
-        self.__links = links
+                    self.__links.update({ season: j['href'] })
 
     @property
     def links(self):

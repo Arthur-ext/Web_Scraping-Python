@@ -5,6 +5,7 @@ if __name__ == "__main__":
     base_uri = r'https://www.basketball-reference.com/'
     
     srch = Scraping(base_uri)
+    
     srch.request()
 
     content = srch.findUris()
