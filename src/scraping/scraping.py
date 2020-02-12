@@ -1,24 +1,15 @@
 from bs4 import BeautifulSoup
-from selenium.webdriver import Chrome
+from selenium import webdriver
 import re
 
-class Search(object):
+class Scraping(object):
     def __init__(self, base_uri):
         self.__base_uri = base_uri
         self.__content = object
         self.__links = {}
 
-    @property
-    def links(self):
-        return self.__links
-
-    @property
-    def content(self):
-        return self.__content
-
-    
     def request(self):
-        with Chrome(executable_path=r"/usr/bin/chromedriver") as driver:
+        with webdriver.Chrome(executable_path=r"/usr/bin/chromedriver") as driver:
             driver.get(self.__base_uri)
             self.__content = BeautifulSoup(driver.page_source, "html.parser")
 
@@ -43,3 +34,7 @@ class Search(object):
             for j in i.findAll(name="a"):
                 if j.getText() == "Summary":
                     self.__links.update({ season: j['href'] })
+
+    @property
+    def links(self):
+        return self.__links

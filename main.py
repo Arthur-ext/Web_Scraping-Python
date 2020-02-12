@@ -1,26 +1,17 @@
 if __name__ == "__main__":
     import requests as rqs
-    from src.crawler.search import Search
-    from src.crawler.scraping import Scraping
+    from src.scraping.scraping import Scraping
     
-    base_uri = r'https://www.basketball-reference.com'
+    base_uri = r'https://www.basketball-reference.com/'
     
-    srch = Search(base_uri)
+    srch = Scraping(base_uri)
     
     srch.request()
 
     content = srch.findUris()
     srch.getUris()
-    urls = []
-    
-    for season, url in srch.links:
-        url_season = base_uri + url
-        
-        scrapy = Scraping(srch.content, url_season, season)
-        scrapy.getTable()
-    
-    
 
+    print(srch.links)
     
     
 
