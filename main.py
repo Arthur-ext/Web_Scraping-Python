@@ -1,13 +1,3 @@
-if __name__ == "__main__":
-    import requests as rqs
-    from src.scraping.scraping import Scraping
-    
-    base_uri = r'https://www.basketball-reference.com/'
-    
-
-
-
-
 
 # import pandas as pd
 # import requests as rqs

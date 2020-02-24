@@ -1,11 +1,12 @@
 {
-    "date": 2020,
     "updates": 0, // number of updates on this record (increment one when data is updated)
     "team_data": {
         "conference": "eastern", // conference: "eastern or western"
         "name": "Milwaukee Bucks",
         "tag": "MIL",
         "executive": "Jon Horst",
-        "coach": "Mike Budenholzen"
+        "coach": "Mike Budenholzen",
+        "arena": "Fiserv Forum",
+        "season": "2019-20"
     }
 }
